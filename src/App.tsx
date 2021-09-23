@@ -2,13 +2,11 @@ import React from 'react';
 import logo from './logo.svg';
 import './Style/App.css';
 import * as d3 from 'd3';
-
-type fh = [String, Number];
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MapContainer from "./Components/MapContainer";
 import { Card } from "react-bootstrap";
 import InfoContainer from "./Components/InfoContainer";
-
+type fh = [String, Number];
 function App() {
   
 

@@ -1,12 +1,19 @@
 import React from 'react';
-import '../Style/Container.css';
+import Options from "./Options";
+import "../Style/Container.css";
 
 function InfoContainer () {
     return (
-        <div className="Container">
-            <h3>This is the info part</h3>
+         <div className="Container">
+            <div className="info-container">
+                <p>Organization Station</p>
+            </div>
+            <div className="options-container">
+                <Options></Options>
+            </div>
         </div>
-    );
+            )
 }
+
 
 export default InfoContainer
