@@ -1,10 +1,18 @@
 .App {
   background: #2e3642;
   height: 100vh;
+  color: white;
 }
 
 .map-container {
   
+}
+
+.info-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-right: 50px;
 }
 
 .ContainerContainer {
@@ -14,4 +22,16 @@
   align-items: stretch;
   width: 100%;
   margin-top: 20px;
+}
+
+.ship-container {
+  display: flex;
+  flex-direction: row;
+  margin: 15px 0 15px 0;
+}
+
+.info-section {
+}
+
+.options-container {
 }

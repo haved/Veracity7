@@ -9,9 +9,12 @@ function InfoContainer () {
              <div className="info-section">
                 <div className="info-container">
                     <p>Organization Station</p>
+                    <Options></Options>
                 </div>
                 <div className="options-container">
-                    <Options></Options>
+                    
+                    <ShipComponent></ShipComponent>
+                    <ShipComponent></ShipComponent>
                     <ShipComponent></ShipComponent>
                 </div>
             </div>
