@@ -12,7 +12,6 @@ function InfoContainer () {
                     <Options></Options>
                 </div>
                 <div className="options-container">
-                    
                     <ShipComponent></ShipComponent>
                     <ShipComponent></ShipComponent>
                     <ShipComponent></ShipComponent>
