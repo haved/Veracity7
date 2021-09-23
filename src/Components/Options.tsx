@@ -5,7 +5,7 @@ const Options  = ()  => {
     return (
         <div className="options">
             <Dropdown>
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
+            <Dropdown.Toggle variant="secondary" id="dropdown-basic">
                 Sort By
             </Dropdown.Toggle>
 

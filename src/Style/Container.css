@@ -2,3 +2,8 @@
     background: #083D77;
     border-radius: 15px;
 }
+
+.info-section {
+    display: flex;
+    flex-direction: row;
+}
