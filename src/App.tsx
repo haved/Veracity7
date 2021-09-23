@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MapContainer from "./Components/MapContainer";
-import { Card } from "react-bootstrap";
+import InfoContainer from './Components/InfoContainer';
 
 function App() {
   return (
@@ -14,6 +14,7 @@ function App() {
         </header>
       </div>
       <MapContainer></MapContainer>
+      <InfoContainer></InfoContainer>
     </div>
 
     

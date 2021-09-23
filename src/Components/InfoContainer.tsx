@@ -1,9 +1,15 @@
 import React from 'react';
+import Options from "./Options";
 
 function InfoContainer () {
     return (
-        <div className="InfoContainer">
-            <h1>This is the info part</h1>
+         <div className="Container">
+            <div className="info-container">
+                <p>Organization Station</p>
+            </div>
+            <div className="options-container">
+                <Options></Options>
+            </div>
         </div>
     );
 }
