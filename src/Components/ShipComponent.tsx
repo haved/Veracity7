@@ -1,5 +1,5 @@
 import * as React from "react";
-import "../Style/Container.css";
+import "../Style/App.css";
 
 const ShipComponent  = ()  => {
     return (

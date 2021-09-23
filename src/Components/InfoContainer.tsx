@@ -1,11 +1,11 @@
 import React from 'react';
 import Options from "./Options";
 import ShipComponent from './ShipComponent';
-import "../Style/Container.css";
+import "../Style/App.css";
 
 function InfoContainer () {
     return (
-         <div className="Container">
+         <div className="Container" id={"info"}>
              <div className="info-section">
                 <div className="info-container">
                     <p>Organization Station</p>
