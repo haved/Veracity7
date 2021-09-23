@@ -1,4 +1,4 @@
-Vessel name,From,To,Loading condition,hours since last position [h],longitude,latitude
+Vessel_name,From,To,Loading_condition,hours_since_last_position,longitude,latitude
 M/S Eco (06),ITTAR,USMSY,Ballast,0,17.21680778,40.4747175
 M/S Eco (06),ITTAR,USMSY,Ballast,1,17.19524766,40.43781081
 M/S Eco (06),ITTAR,USMSY,Ballast,1,17.139055,40.30150833
