@@ -2,7 +2,7 @@ import * as React from "react";
 
 const MapContainer  = ()  => {
     return (
-        <div className="map-container">
+        <div className="Container">
             <h3>Imagine a map here</h3>
 
         </div>
