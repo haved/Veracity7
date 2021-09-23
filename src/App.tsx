@@ -13,10 +13,10 @@ function App() {
   let ais = d3.csv("http://localhost:3000/data/Dataset_Gren_AIS_2021.csv");
   
   return (
-    <div>
-      <div className="App">
+    <div className="App">
+      <div>
         <header className="App-header">
-          <h1>This is header</h1>
+          <h1 style={{marginLeft: 10}}>This is header</h1>
         </header>
       </div>
         <div className="ContainerContainer">

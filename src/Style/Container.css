@@ -1,6 +1,10 @@
 .Container {
     background: #083D77;
     border-radius: 15px;
+    align-items: baseline;
+    flex-grow: 1;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .info-section {
