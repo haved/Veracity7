@@ -1,25 +1,20 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\herma\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js install
+  C:\Program Files\nodejs\node.exe C:\Users\Bruker\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js install
 
 PATH: 
-  C:\Users\herma\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\herma\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\Program Files\MATLAB\R2021a\bin;C:\Users\herma\AppData\Local\Programs\Python\Python39\Scripts;C:\Users\herma\AppData\Local\Programs\Python\Python39;C:\Users\herma\AppData\Local\Microsoft\WindowsApps;C:\Users\herma\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\herma\AppData\Roaming\npm;C:\Program Files (x86)\apache-maven-3.8.2\bin;C:\Program Files\gitlabRunner;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+  C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Bruker\bin;C:\Users\Bruker\AppData\Local\Programs\Python\Python39\Scripts;C:\Users\Bruker\AppData\Local\Programs\Python\Python39;C:\Python39\Scripts;C:\Python39;C:\Program Files\AdoptOpenJDK\jdk-13.0.1.9-openj9\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\MiKTeX 2.9\miktex\bin\x64;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs;C:\Program Files\MySQL\MySQL Shell 8.0\bin;C:\Users\Bruker\AppData\Local\Microsoft\WindowsApps;C:\Users\Bruker\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\JetBrains\IntelliJ IDEA 2020.2.3\bin;C:\Program Files\JetBrains\PyCharm 2020.3.2\bin;C:\Python3;C:\Python39\Scripts";C:\Users\Bruker\AppData\Roaming\npm;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.2.2\plugins\maven\lib\maven3\bin;C\Users\Bruker\AppData\Local\Yarn\bin
 
 Yarn version: 
-  1.22.11
+  1.22.10
 
 Node version: 
-  14.17.5
+  14.17.6
 
 Platform: 
   win32 x64
 
 Trace: 
-  SyntaxError: C:\Users\herma\Documents\code\Veracity7\package.json: Unexpected token < in JSON at position 366
-      at JSON.parse (<anonymous>)
-      at C:\Users\herma\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:1625:59
-      at Generator.next (<anonymous>)
-      at step (C:\Users\herma\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:310:30)
-      at C:\Users\herma\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:321:13
+  Error: EPERM: operation not permitted, unlink 'C:\Users\Bruker\Desktop\Gren\Veracity7\node_modules\@rollup\plugin-node-resolve\node_modules\.bin'
 
 npm manifest: 
   {
@@ -35,11 +30,8 @@ npm manifest:
       "@types/node": "^12.0.0",
       "@types/react": "^17.0.0",
       "@types/react-dom": "^17.0.0",
-  <<<<<<< HEAD
       "d3": "^7.0.3",
-  =======
       "bootstrap": "^5.1.1",
-  >>>>>>> 59a31760609d6ce34e5a6f991133e7bc14f97b14
       "react": "^17.0.2",
       "react-bootstrap": "^1.6.3",
       "react-dom": "^17.0.2",
@@ -6419,19 +6411,16 @@ Lockfile:
       has "^1.0.3"
       side-channel "^1.0.4"
   
-  <<<<<<< HEAD
   "internmap@1 - 2":
     version "2.0.3"
     resolved "https://registry.yarnpkg.com/internmap/-/internmap-2.0.3.tgz#6685f23755e43c524e251d29cbc97248e3061009"
     integrity sha512-5Hh7Y1wQbvY5ooGgPbDaL5iYLAPzMTUrjMulskHLH6wnv/A+1q5rgEaiuqEjB+oxGXIVZs1FF+R/KPN3ZSQYYg==
-  =======
   invariant@^2.2.4:
     version "2.2.4"
     resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
     integrity sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==
     dependencies:
       loose-envify "^1.0.0"
-  >>>>>>> 59a31760609d6ce34e5a6f991133e7bc14f97b14
   
   ip-regex@^2.1.0:
     version "2.1.0"
