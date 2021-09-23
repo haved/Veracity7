@@ -48,6 +48,9 @@
   display: flex;
   flex-direction: row;
   margin: 15px 0 15px 0;
+  border-radius: 5px;
+  box-shadow: 0px 1px 6px #00000077;
+  padding: 10px;
 }
 
 .info-section {
