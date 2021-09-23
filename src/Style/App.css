@@ -8,6 +8,13 @@
   
 }
 
+.info-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-right: 50px;
+}
+
 .ContainerContainer {
   display: flex;
   flex-direction: row;
@@ -37,4 +44,16 @@
 .info-section {
   display: flex;
   flex-direction: row;
+}
+
+.ship-container {
+  display: flex;
+  flex-direction: row;
+  margin: 15px 0 15px 0;
+}
+
+.info-section {
+}
+
+.options-container {
 }
