@@ -1,13 +1,12 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './Style/App.css';
 import * as d3 from 'd3';
-
-type fh = [String, Number];
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MapContainer from "./Components/MapContainer";
-import InfoContainer from './Components/InfoContainer';
-
+import { Card } from "react-bootstrap";
+import InfoContainer from "./Components/InfoContainer";
+type fh = [String, Number];
 function App() {
   
 
@@ -20,8 +19,10 @@ function App() {
           <h1>This is header</h1>
         </header>
       </div>
-      <MapContainer></MapContainer>
-      <InfoContainer></InfoContainer>
+        <div className="ContainerContainer">
+            <MapContainer></MapContainer>
+            <InfoContainer></InfoContainer>
+        </div>
     </div>
 
     

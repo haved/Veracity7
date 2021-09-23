@@ -1,5 +1,6 @@
 import React from 'react';
 import Options from "./Options";
+import "../Style/Container.css";
 
 function InfoContainer () {
     return (
@@ -11,7 +12,8 @@ function InfoContainer () {
                 <Options></Options>
             </div>
         </div>
-    );
+            )
 }
+
 
 export default InfoContainer
