@@ -5,20 +5,25 @@ import { Boat, loadBoats } from "../Boat";
 import "../Boat";
 import "../App";
 
-const ShipComponent = () => {
+const ShipComponent = (props: { boat: Boat }) => {
+  const { boat } = props;
+
   return (
     <div className="ship-container">
       <div>
         <p>Image</p>
       </div>
       <div className="ship-info">
-        <div>
-          <h5>Name of ship</h5>
+        <div className="vessel-name">
+          <h5>{boat.vesselName}</h5>
         </div>
-        <div>
-          <p>Imagine a lot of different information about this ship here.</p>
-          <p>Speed: I am</p>
-          <p>Lorem: dimsum</p>
+        <div className="information">
+          <p className="info-text">Total Price: </p>
+          {boat.price}
+        </div>
+        <div className="information">
+          <p className="info-text">Total CO2: </p>
+          {boat.ladenTrip.totalCO2 + boat.ballastTrip.totalCO2}
         </div>
       </div>
     </div>

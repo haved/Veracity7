@@ -1,11 +1,10 @@
 .App {
   background: #2e3642;
-  height: 100vh;
+  min-height: 100vh;
   color: white;
 }
 
 .map-container {
-  
 }
 
 .info-container {
@@ -25,7 +24,7 @@
 }
 
 .Container {
-  background: #083D77;
+  background: #083d77;
   border-radius: 15px;
   align-items: baseline;
   margin: 10px;
@@ -57,4 +56,22 @@
 }
 
 .options-container {
+}
+
+#co2 {
+}
+
+.info-text {
+  text-decoration-line: underline;
+  font-weight: bold;
+}
+
+.information {
+  display: flex;
+  gap: 3px;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
 }
