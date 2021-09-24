@@ -3,7 +3,7 @@ import {Feature, Geometry, FeatureCollection } from 'geojson';
 import { feature } from 'topojson-client';
 import { geoEqualEarth, geoOrthographic, geoPath } from "d3-geo";
 import '../Style/App.css';
-import { Boat, loadBoats } from "../Boat";
+import { Boat, Trip, TripPoint } from "../Boat";
 
 const uuid = require('react-uuid');
 
@@ -11,9 +11,13 @@ const scale: number = 200;
 const cx: number = 400;
 const cy: number = 150;
 
+
+
 const MapContainer  = (props: {boats: Boat[]})  => {
     const {boats} = props;
     const [geographies, setGeographies] = React.useState<[] | Array<Feature<Geometry | null>>>([]);
+    const trips: Trip[] = [];
+    const points: Array<number[]> = [];
 
     React.useEffect(() => {
         fetch('/data/world.json').then((response) => {
@@ -30,10 +34,19 @@ const MapContainer  = (props: {boats: Boat[]})  => {
         })
     }, []);
 
-    const projection = geoOrthographic().scale(scale).translate([cx, cy]).rotate([0,0]);
+    const projection = geoEqualEarth().scale(scale).translate([cx, cy]).rotate([0,0]);
     boats.forEach( e => {
-        console.log(e);
+        trips.push(e.ballastTrip);
+        trips.push(e.ladenTrip);
     })
+
+    trips.forEach( e => {
+        e.points.forEach(p => {
+            points.push([p.long, p.lat]);
+        });
+    })
+
+    console.log(points);
 
     return (
         <div className={"Container"} id={"map"}>
@@ -49,7 +62,14 @@ const MapContainer  = (props: {boats: Boat[]})  => {
                     ))}
                 </g>
                 <g>
-                    {}
+                    {(points as []).map((d,i) => (
+                        <path key={`path-${uuid()}`}
+                        d={geoPath().projection(projection)(d) as string}
+                        fill={`rgba(100, 0, 0, 100)`}
+                        stroke="red"
+                        strokeWidth={0.5}
+                        />
+                    ))}
                 </g>
             </svg>
         </div>
