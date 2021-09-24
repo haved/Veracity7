@@ -7,7 +7,7 @@ import { Boat, Trip } from "../Boat";
 
 const scale: number = 200;
 const cx: number = 400;
-const cy: number = 150;
+const cy: number = 220;
 
 const MapContainer  = (props: {boats: Boat[]})  => {
     const {boats} = props;
