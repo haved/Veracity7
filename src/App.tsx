@@ -14,6 +14,7 @@ function App(this: any) {
   const [boatsUnsorted, setBoatsUnsorted] = useState<Boat[]>([]);
   const [sorting, setSorting] = useState<string | null>("totalCO2");
   const [boats, setBoats] = useState<Boat[]>([]);
+  const [boatsHidden, setBoatsHidden] = useState<string[]>([]);
 
   useEffect(() => {
     async function loadAsync() {
@@ -40,6 +41,8 @@ function App(this: any) {
       );
   }, [boatsUnsorted, sorting]);
 
+
+
   return (
     <div className="App">
       <div>
@@ -49,7 +52,7 @@ function App(this: any) {
       </div>
       <div className="ContainerContainer">
         <MapContainer boats={boats}></MapContainer>
-        <InfoContainer boats={boats} setSorting={setSorting}></InfoContainer>
+        <InfoContainer boats={boats} setSorting={setSorting} boatsHidden={boatsHidden} setBoatsHidden={setBoatsHidden}></InfoContainer>
       </div>
     </div>
   );
