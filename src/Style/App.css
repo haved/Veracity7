@@ -64,13 +64,23 @@
 }
 
 .info-text {
-  text-decoration-line: underline;
   font-weight: bold;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  font-size: 0.9em;
+}
+
+.info-value {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  font-size: 0.9em;
 }
 
 .information {
-  display: flex;
-  gap: 3px;
+  margin: 0;
+  padding: 0;
 }
 
 svg {
