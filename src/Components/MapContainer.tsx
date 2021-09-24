@@ -9,7 +9,7 @@ const scale: number = 200;
 const cx: number = 400;
 const cy: number = 220;
 
-const MapContainer  = (props: {boats: Boat[]})  => {
+const MapContainer  = (props: {boats: Boat[], boatsHidden: string[]})  => {
     const {boats} = props;
     const [geographies, setGeographies] = React.useState<[] | Array<Feature<Geometry | null>>>([]);
     const trips: Trip[] = [];
@@ -28,8 +28,10 @@ const MapContainer  = (props: {boats: Boat[]})  => {
         })
     }, []);
 
+    const shownBoats = boats.filter((it) => !props.boatsHidden.includes(it.vesselName));
+
     const projection = geoEqualEarth().scale(scale).translate([cx, cy]).rotate([0,0]);
-    boats.forEach( e => {
+    shownBoats.forEach(e => {
       console.log(e.ballastTrip.points.length);
         trips.push(e.ballastTrip);
         trips.push(e.ladenTrip);
