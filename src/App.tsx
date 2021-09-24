@@ -49,8 +49,6 @@ function App(this: any) {
     setBoats(sorted);
   }, [boatsUnsorted, sorting]);
 
-
-
   return (
     <div className="App">
       <div>
@@ -61,8 +59,8 @@ function App(this: any) {
         </header>
       </div>
       <div className="ContainerContainer">
-        <MapContainer boats={boats} boatsHidden={boatsHidden} dotVariable="price"></MapContainer>
-        <InfoContainer boats={boats} setSorting={setSorting} boatsHidden={boatsHidden} setBoatsHidden={setBoatsHidden} sorting={sorting}></InfoContainer>
+       <MapContainer boats={boats} boatsHidden={boatsHidden} dotVariable={sorting!}></MapContainer>
+       <InfoContainer boats={boats} setSorting={setSorting} boatsHidden={boatsHidden} setBoatsHidden={setBoatsHidden} sorting={sorting}></InfoContainer>
       </div>
     </div>
   );

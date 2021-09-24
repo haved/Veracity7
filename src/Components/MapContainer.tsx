@@ -10,11 +10,11 @@ const cx: number = 400;
 const cy: number = 220;
 const viewboxWidth = 800;
 const viewboxHeight = 450;
-type DotVariable = "CO2"|"price"|"time"|null;
 
 const PRICE_PER_DOT = 50000;
 const CO2_PER_DOT = 100;
 const TIME_PER_DOT = 24;
+const DISTANCE_PER_DOT = 500;
 
 //This function takes in latitude and longitude of two location and returns the distance between them as the crow flies (in km)
 function calcCrow(lat1:number, lon1:number, lat2:number, lon2:number) 
@@ -38,7 +38,7 @@ function toRad(Value:number)
     return Value * Math.PI / 180;
 }
 
-const MapContainer = (props: {boats: Boat[], boatsHidden: string[], dotVariable: DotVariable}) => {
+const MapContainer  = (props: {boats: Boat[], boatsHidden: string[], dotVariable: string|null})  => {
     const {boats} = props;
     const [geographies, setGeographies] = React.useState<[] | Array<Feature<Geometry | null>>>([]);
     const trips: Trip[] = [];
@@ -145,17 +145,29 @@ const MapContainer = (props: {boats: Boat[], boatsHidden: string[], dotVariable:
       return circles;
     }
 
+    function makeString(text: string) {
+      return <text x="6" y={viewboxHeight+16} fill="white">{text}</text>
+    }
+
     function makeDotPoints() {
       if(props.dotVariable === "price") {
         return boats.flatMap((boat, i) => [
           makeDotPointsForTrip(boat.ladenTrip, boat.price / PRICE_PER_DOT),
-          makeDotPointsLegend(i, boat.color, boat.price / PRICE_PER_DOT)
+          makeDotPointsLegend(boats.length-i, boat.color, boat.price / PRICE_PER_DOT),
+          makeString(`Each dot: $${PRICE_PER_DOT} USD`)
         ]);
-      } else if(props.dotVariable === "CO2") {
+      } else if(props.dotVariable === "totalCO2") {
         return boats.flatMap((boat, i) => [
           makeDotPointsForTrip(boat.ballastTrip, boat.ballastTrip.totalCO2 / CO2_PER_DOT),
           makeDotPointsForTrip(boat.ladenTrip, boat.ladenTrip.totalCO2 / CO2_PER_DOT),
-          makeDotPointsLegend(i, boat.color, (boat.ballastTrip.totalCO2 + boat.ladenTrip.totalCO2) / CO2_PER_DOT)
+          makeDotPointsLegend(boats.length-i, boat.color, (boat.ballastTrip.totalCO2 + boat.ladenTrip.totalCO2) / CO2_PER_DOT),
+          makeString(`Each dot: ${CO2_PER_DOT} tonnes CO2`)
+        ]);
+      } else if(props.dotVariable === "ballastDistance") {
+        return boats.flatMap((boat, i) => [
+          makeDotPointsForTrip(boat.ballastTrip, boat.ballastTrip.totalDistance / DISTANCE_PER_DOT),
+          makeDotPointsLegend(boats.length-i, boat.color, boat.ballastTrip.totalDistance / DISTANCE_PER_DOT),
+          makeString(`Each dot: ${DISTANCE_PER_DOT}nm`)
         ]);
       }
       return [];

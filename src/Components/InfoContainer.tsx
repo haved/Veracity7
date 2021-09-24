@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Options from "./Options";
 import ShipComponent from "./ShipComponent";
 import "../Style/App.css";
-import { Boat, loadBoats } from "../Boat";
+import { Boat } from "../Boat";
 
 function InfoContainer(props: {
   boats: Boat[];
