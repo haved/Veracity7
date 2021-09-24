@@ -61,8 +61,8 @@ function App(this: any) {
         </header>
       </div>
       <div className="ContainerContainer">
-        <InfoContainer boats={boats} setSorting={setSorting} boatsHidden={boatsHidden} setBoatsHidden={setBoatsHidden} sorting={sorting}></InfoContainer>
         <MapContainer boats={boats} dotVariable="price"></MapContainer>
+        <InfoContainer boats={boats} setSorting={setSorting} boatsHidden={boatsHidden} setBoatsHidden={setBoatsHidden} sorting={sorting}></InfoContainer>
       </div>
     </div>
   );
