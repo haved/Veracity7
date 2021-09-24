@@ -10,6 +10,7 @@ export interface TripPoint {
 }
 
 export interface Trip {
+  key: string,
   points: TripPoint[],
   totalDistance: number,
   hours: number,
@@ -43,6 +44,7 @@ export async function loadBoats(): Promise<Boat[]> {
     const to = ship["PORT_UN_TO"];
 
     const trip: Trip = {
+      key: `${name}-${from}-${to}`,
       points: [],
       hours: +ship["HOURS_UNDERWAY [h]"]!,
       totalDistance: +ship["total_distance [nm]"]!,
@@ -63,7 +65,7 @@ export async function loadBoats(): Promise<Boat[]> {
   for(let i = 0; i < ais_data.length; i++) {
     const ais_point = ais_data[i];
     const name = ais_point["Vessel_name"]!;
-    const ballast = ais_point["Loading condition"] === "Ballast";
+    const ballast = ais_point["Loading_condition"] === "Ballast";
 
     const trip = ballast ? ships[name].ballastTrip : ships[name].ladenTrip;
     const lastTime = trip?.points.length === 0 ? 0 : trip?.points[trip?.points.length-1].hourIn!;
