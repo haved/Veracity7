@@ -44,7 +44,7 @@ function InfoContainer(props: {
     <div className="Container" id={"info"}>
       <div className="info-section">
         <div className="info-container">
-          <h4>Organization Station</h4>
+          <h4>Settings</h4>
           <Options setSorting={props.setSorting}></Options>
         </div>
         <div className="options-container">{showBoats}</div>

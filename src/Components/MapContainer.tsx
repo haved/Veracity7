@@ -10,8 +10,8 @@ const cx: number = 400;
 const cy: number = 220;
 const viewboxWidth = 800;
 const viewboxHeight = 450;
-
 type DotVariable = "CO2"|"price"|"time"|null;
+
 const PRICE_PER_DOT = 50000;
 const CO2_PER_DOT = 100;
 const TIME_PER_DOT = 24;
@@ -38,7 +38,7 @@ function toRad(Value:number)
     return Value * Math.PI / 180;
 }
 
-const MapContainer  = (props: {boats: Boat[], dotVariable: DotVariable})  => {
+const MapContainer = (props: {boats: Boat[], boatsHidden: string[], dotVariable: DotVariable}) => {
     const {boats} = props;
     const [geographies, setGeographies] = React.useState<[] | Array<Feature<Geometry | null>>>([]);
     const trips: Trip[] = [];
@@ -57,8 +57,10 @@ const MapContainer  = (props: {boats: Boat[], dotVariable: DotVariable})  => {
         })
     }, []);
 
+    const shownBoats = boats.filter((it) => !props.boatsHidden.includes(it.vesselName));
+
     const projection = geoEqualEarth().scale(scale).translate([cx, cy]).rotate([0,0]);
-    boats.forEach( e => {
+    shownBoats.forEach(e => {
         trips.push(e.ballastTrip);
         trips.push(e.ladenTrip);
     });
@@ -179,6 +181,6 @@ const MapContainer  = (props: {boats: Boat[], dotVariable: DotVariable})  => {
             </svg>
         </div>
     );
-}
+};
 
-export default MapContainer
+export default MapContainer;
