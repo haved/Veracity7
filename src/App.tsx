@@ -25,19 +25,28 @@ function App(this: any) {
   useEffect(() => {
     const sorted = [...boatsUnsorted];
     if (sorting === "price") sorted.sort((a, b) => a.price - b.price);
-    setBoats(sorted);
-    if (sorting === "totalCO2")
+    else if (sorting === "totalCO2")
       sorted.sort(
         (a, b) =>
           a.ladenTrip.totalCO2 +
           a.ballastTrip.totalCO2 -
           (b.ladenTrip.totalCO2 + b.ballastTrip.totalCO2)
       );
-    setBoats(sorted);
-    if (sorting === "ballastDistance")
+    else if (sorting === "ballastDistance")
       sorted.sort(
         (a, b) => a.ballastTrip.totalDistance - b.ballastTrip.totalDistance
       );
+    else if(sorting === "CO2nm")
+      sorted.sort(
+        (a,b) => (a.ballastTrip.totalCO2 + a.ladenTrip.totalCO2)/(a.ballastTrip.totalDistance + a.ladenTrip.totalDistance) - (b.ballastTrip.totalCO2 + b.ladenTrip.totalCO2)/(b.ballastTrip.totalDistance + b.ladenTrip.totalDistance)
+      );
+
+    else if(sorting === "pricenm")
+      sorted.sort(
+        (a,b) => a.price/a.ladenTrip.totalDistance - b.price/b.ladenTrip.totalDistance
+      );
+
+    setBoats(sorted);
   }, [boatsUnsorted, sorting]);
 
   return (
