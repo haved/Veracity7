@@ -8,12 +8,36 @@ function InfoContainer(props: {
   boats: Boat[];
   setSorting: (sorting: string) => void;
   sorting: string | null | undefined;
+  boatsHidden: string[];
+  setBoatsHidden: (hidden: string[]) => void;
 }) {
   const { boats } = props;
-  const COLORS: string[] = ["#00AA00", "#66AA00", "#99AA00", "#AAAA00", "#AA6600", "#AA0000"];
+  const COLORS:Record<string, any> = {
+    "M/S Ocean (24)": "#00AA00",
+    "M/S Gren (17)": "#66AA00",
+    "M/S Innovation (24)": "#99AA00",
+    "M/S Sustainable (15)": "#AAAA00",
+    "M/S Green (13)": "#AA6600",
+    "M/S Eco (06)": "#AA0000"
+  };
+
+  const toggleBoatHidden = (vessel: string) => {
+    const newHidden = [...props.boatsHidden];
+    const vesselIndex = newHidden.indexOf(vessel)
+    if(newHidden.includes(vessel))
+      newHidden.splice(vesselIndex, 1);
+    else
+      newHidden.push(vessel);
+    props.setBoatsHidden(newHidden);
+  };
 
   let showBoats = boats.map((boat, i) => (
-    <ShipComponent boat={boat} color={COLORS[i]} key={boat.vesselName} sorted={props.sorting}></ShipComponent>
+    <ShipComponent boat={boat}
+                   color={COLORS[boat.vesselName]}
+                   key={boat.vesselName}
+                   hidden={props.boatsHidden.includes(boat.vesselName)}
+                   toggleBoatHidden={toggleBoatHidden}
+                   sorted={props.sorting}></ShipComponent>
   ));
 
   return (

@@ -24,6 +24,7 @@ export interface Boat {
   vesselName: string,
   shipDesign: string,
   color: string,
+  backgroundColor: any,
   europeHarbor: string,
   usHarbor: string,
   chinaHarbor: string,
