@@ -131,11 +131,15 @@ svg {
   padding: 0;
 }
 
-.vessel-name {
-  display: inline-block;
+.vessel-name>*{
+  display: block;
 }
 
 .ship-mini-info {
   display: inline-block;
   margin: 2px;
+}
+
+.ship-info {
+  width: 100%;
 }

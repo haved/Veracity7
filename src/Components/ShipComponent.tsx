@@ -39,7 +39,7 @@ const ShipComponent = (props: { boat: Boat, color: any, hidden: boolean, toggleB
         <div className="ship-top-info">
           <div className="vessel-name" style={{display: "flex", justifyContent: "space-between"}}>
             <h5>{boat.vesselName}</h5>
-            <Form.Check aria-label="option 1" onClick={handleHideToggle} />
+            <Form.Check aria-label="option 1" onClick={handleHideToggle} style={{float: "right"}} />
           </div>
         </div>
         <div className={(open) ? "disable" : "active"}>
