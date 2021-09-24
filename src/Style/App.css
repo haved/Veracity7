@@ -5,7 +5,6 @@
 }
 
 .map-container {
-  
 }
 
 .info-container {
@@ -25,7 +24,7 @@
 }
 
 .Container {
-  background: #083D77;
+  background: #083d77;
   border-radius: 15px;
   align-items: baseline;
   margin: 10px;
@@ -57,4 +56,17 @@
 }
 
 .options-container {
+}
+
+#co2 {
+}
+
+.info-text {
+  text-decoration-line: underline;
+  font-weight: bold;
+}
+
+.information {
+  display: flex;
+  gap: 3px;
 }
