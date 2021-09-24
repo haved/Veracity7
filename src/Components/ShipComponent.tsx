@@ -45,8 +45,8 @@ const ShipComponent = (props: { boat: Boat, color: any, hidden: boolean, toggleB
         <div className={(open) ? "disable" : "active"}>
           <div className="ship-mini-info">
             {(props.sorted === "price") ? `Price: \$${(boat.price/1000000).toFixed(2)} M` : ``}
-            {(props.sorted === "totalCO2") ? `Total CO2 (t): ${((boat.ballastTrip.totalCO2 + boat.ladenTrip.totalCO2)/1000).toFixed(2)} G` : ``}
-            {(props.sorted === "ballastDistance") ? `Distance from me (nm): ${((boat.ballastTrip.totalDistance/1000).toFixed(2))} G` : ``}
+            {(props.sorted === "totalCO2") ? `Total CO2 (t): ${((boat.ballastTrip.totalCO2 + boat.ladenTrip.totalCO2)/1000).toFixed(2)} k` : ``}
+            {(props.sorted === "ballastDistance") ? `Distance from me (nm): ${((boat.ballastTrip.totalDistance/1000).toFixed(2))} k` : ``}
             {(props.sorted === "pricenm") ? `Price/nm: ${((boat.price)/(boat.ladenTrip.totalDistance)).toFixed(2)}$` : ``}
             {(props.sorted === "CO2nm") ? `CO2(t)/nm: ${((boat.ballastTrip.totalCO2 + boat.ladenTrip.totalCO2)/(boat.ballastTrip.totalDistance + boat.ladenTrip.totalDistance)).toFixed(2)}` : ``}
           </div>
@@ -56,14 +56,14 @@ const ShipComponent = (props: { boat: Boat, color: any, hidden: boolean, toggleB
           
         </div>
         <div className={`information ${(open) ? "active" : "disable"}`}>
-          <p className="info-text">Total CO2 (t): </p> <p className="info-value">{((boat.ballastTrip.totalCO2 + boat.ladenTrip.totalCO2)/1000).toFixed(2)} G</p>
+          <p className="info-text">Total CO2 (t): </p> <p className="info-value">{((boat.ballastTrip.totalCO2 + boat.ladenTrip.totalCO2)/1000).toFixed(2)} k</p>
           
         </div>
         <div className={`information ${(open) ? "active" : "disable"}`}>
-          <p className="info-text">Total distance (nm): </p><p className="info-value">{(((boat.ballastTrip.totalDistance + boat.ladenTrip.totalDistance)/1000).toFixed(2))} G</p>
+          <p className="info-text">Total distance (nm): </p><p className="info-value">{(((boat.ballastTrip.totalDistance + boat.ladenTrip.totalDistance)/1000).toFixed(2))} k</p>
         </div>
         <div className={`information ${(open) ? "active" : "disable"}`}>
-          <p className="info-text">Distance from me (nm): </p> <p className="info-value">{((boat.ballastTrip.totalDistance/1000).toFixed(2))} G</p>
+          <p className="info-text">Distance from me (nm): </p> <p className="info-value">{((boat.ballastTrip.totalDistance/1000).toFixed(2))} k</p>
         </div>
       </div>
     </div>

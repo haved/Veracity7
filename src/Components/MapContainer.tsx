@@ -151,22 +151,22 @@ const MapContainer  = (props: {boats: Boat[], boatsHidden: string[], dotVariable
 
     function makeDotPoints() {
       if(props.dotVariable === "price") {
-        return boats.flatMap((boat, i) => [
+        return shownBoats.flatMap((boat, i) => [
           makeDotPointsForTrip(boat.ladenTrip, boat.price / PRICE_PER_DOT),
-          makeDotPointsLegend(boats.length-i, boat.color, boat.price / PRICE_PER_DOT),
+          makeDotPointsLegend(shownBoats.length-i, boat.color, boat.price / PRICE_PER_DOT),
           makeString(`Each dot: $${PRICE_PER_DOT} USD`)
         ]);
       } else if(props.dotVariable === "totalCO2") {
-        return boats.flatMap((boat, i) => [
+        return shownBoats.flatMap((boat, i) => [
           makeDotPointsForTrip(boat.ballastTrip, boat.ballastTrip.totalCO2 / CO2_PER_DOT),
           makeDotPointsForTrip(boat.ladenTrip, boat.ladenTrip.totalCO2 / CO2_PER_DOT),
-          makeDotPointsLegend(boats.length-i, boat.color, (boat.ballastTrip.totalCO2 + boat.ladenTrip.totalCO2) / CO2_PER_DOT),
+          makeDotPointsLegend(shownBoats.length-i, boat.color, (boat.ballastTrip.totalCO2 + boat.ladenTrip.totalCO2) / CO2_PER_DOT),
           makeString(`Each dot: ${CO2_PER_DOT} tonnes CO2`)
         ]);
       } else if(props.dotVariable === "ballastDistance") {
-        return boats.flatMap((boat, i) => [
+        return shownBoats.flatMap((boat, i) => [
           makeDotPointsForTrip(boat.ballastTrip, boat.ballastTrip.totalDistance / DISTANCE_PER_DOT),
-          makeDotPointsLegend(boats.length-i, boat.color, boat.ballastTrip.totalDistance / DISTANCE_PER_DOT),
+          makeDotPointsLegend(shownBoats.length-i, boat.color, boat.ballastTrip.totalDistance / DISTANCE_PER_DOT),
           makeString(`Each dot: ${DISTANCE_PER_DOT}nm`)
         ]);
       }
