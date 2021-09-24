@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Options from "./Options";
 import ShipComponent from "./ShipComponent";
 import "../Style/App.css";
@@ -7,12 +7,13 @@ import { Boat, loadBoats } from "../Boat";
 function InfoContainer(props: {
   boats: Boat[];
   setSorting: (sorting: string) => void;
+  sorting: string | null | undefined;
 }) {
   const { boats } = props;
   const COLORS: string[] = ["#00AA00", "#66AA00", "#99AA00", "#AAAA00", "#AA6600", "#AA0000"];
 
   let showBoats = boats.map((boat, i) => (
-    <ShipComponent boat={boat} color={COLORS[i]} key={boat.vesselName}></ShipComponent>
+    <ShipComponent boat={boat} color={COLORS[i]} key={boat.vesselName} sorted={props.sorting}></ShipComponent>
   ));
 
   return (

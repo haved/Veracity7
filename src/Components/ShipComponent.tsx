@@ -5,7 +5,7 @@ import { Boat, loadBoats } from "../Boat";
 import "../Boat";
 import "../App";
 
-const ShipComponent = (props: { boat: Boat, color: any}) => {
+const ShipComponent = (props: { boat: Boat, color: any, sorted: string | null | undefined}) => {
   const color = props.color
   const boat = props.boat;
   const [open, setOpen] = React.useState<Boolean>(false);
@@ -13,6 +13,8 @@ const ShipComponent = (props: { boat: Boat, color: any}) => {
   const handleClick = () => {
     setOpen(!open);
   }
+
+  // price, CO2, distance, CO2/nm, price/nm
 
   return (
     <div className="ship-container" onClick={handleClick} style={{background: color}}>
@@ -26,14 +28,15 @@ const ShipComponent = (props: { boat: Boat, color: any}) => {
         </div>
         <div className={(open) ? "disable" : "active"}>
           <div className="ship-mini-info">
-            <p>Price/nm: {((boat.price)/(boat.ladenTrip.totalDistance)).toFixed(2)} $,</p>
-          </div>
-          <div className="ship-mini-info">
-            <p>CO2(t)/nm: {((boat.ballastTrip.totalCO2 + boat.ladenTrip.totalCO2)/(boat.ballastTrip.totalDistance + boat.ladenTrip.totalDistance)).toFixed(2)}</p>
+            {(props.sorted === "price") ? `Price: \$${(boat.price/1000000).toFixed(2)} M` : ``}
+            {(props.sorted === "totalCO2") ? `Total CO2 (t): ${((boat.ballastTrip.totalCO2 + boat.ladenTrip.totalCO2)/1000).toFixed(2)} G` : ``}
+            {(props.sorted === "ballastDistance") ? `Distance from me (nm): ${((boat.ballastTrip.totalDistance/1000).toFixed(2))} G` : ``}
+            {(props.sorted === "pricenm") ? `Price/nm: ${((boat.price)/(boat.ladenTrip.totalDistance)).toFixed(2)}$,` : ``}
+            {(props.sorted === "CO2nm") ? `CO2(t)/nm: ${((boat.ballastTrip.totalCO2 + boat.ladenTrip.totalCO2)/(boat.ballastTrip.totalDistance + boat.ladenTrip.totalDistance)).toFixed(2)}` : ``}
           </div>
         </div>
         <div className={`information ${(open) ? "active" : "disable"}`}>
-          <p className="info-text">Total Price: </p> <p className="info-value">{(boat.price/1000000).toFixed(2)} M$</p>
+          <p className="info-text">Total Price: </p> <p className="info-value">${(boat.price/1000000).toFixed(2)} M</p>
           
         </div>
         <div className={`information ${(open) ? "active" : "disable"}`}>
