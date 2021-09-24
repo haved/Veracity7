@@ -7,8 +7,9 @@ import MapContainer from "./Components/MapContainer";
 import { Card } from "react-bootstrap";
 import InfoContainer from "./Components/InfoContainer";
 import { Boat, loadBoats } from './Boat';
+import { propTypes } from 'react-bootstrap/esm/Image';
 
-function App() {
+function App(this: any) {
 
   const [boats, setBoats] = useState<Boat[]>([]);
 
@@ -30,7 +31,7 @@ function App() {
         </header>
       </div>
         <div className="ContainerContainer">
-            <MapContainer></MapContainer>
+            <MapContainer boats={boats}></MapContainer>
             <InfoContainer></InfoContainer>
         </div>
     </div>

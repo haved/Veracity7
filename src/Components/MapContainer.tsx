@@ -1,8 +1,9 @@
 import * as React from "react";
 import {Feature, Geometry, FeatureCollection } from 'geojson';
 import { feature } from 'topojson-client';
-import { geoEqualEarth, geoPath } from "d3-geo";
+import { geoEqualEarth, geoOrthographic, geoPath } from "d3-geo";
 import '../Style/App.css';
+import { Boat, loadBoats } from "../Boat";
 
 const uuid = require('react-uuid');
 
@@ -10,8 +11,8 @@ const scale: number = 200;
 const cx: number = 400;
 const cy: number = 150;
 
-const MapContainer  = ()  => {
-
+const MapContainer  = (props: {boats: Boat[]})  => {
+    const {boats} = props;
     const [geographies, setGeographies] = React.useState<[] | Array<Feature<Geometry | null>>>([]);
 
     React.useEffect(() => {
@@ -29,7 +30,10 @@ const MapContainer  = ()  => {
         })
     }, []);
 
-    const projection = geoEqualEarth().scale(scale).translate([cx, cy]).rotate([0,0]);
+    const projection = geoOrthographic().scale(scale).translate([cx, cy]).rotate([0,0]);
+    boats.forEach( e => {
+        console.log(e);
+    })
 
     return (
         <div>
@@ -43,7 +47,9 @@ const MapContainer  = ()  => {
                         strokeWidth={0.5}
                         />
                     ))}
-
+                </g>
+                <g>
+                    {}
                 </g>
             </svg>
         </div>
