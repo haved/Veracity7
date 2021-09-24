@@ -19,9 +19,20 @@ const ShipComponent = (props: { boat: Boat, color: any}) => {
       <div className="image" style={{backgroundColor: boat.color}}>
       </div>
       <div className="ship-info">
-        <div className="vessel-name">
-          <h5>{boat.vesselName}</h5>
+        <div className="ship-top-info">
+          <div className="vessel-name">
+            <h5>{boat.vesselName}</h5>
+          </div>
         </div>
+        <div className="ship-mini-info">
+            <p>Price: {(boat.price/1000000).toFixed(2)} M$,</p>
+          </div>
+          <div className="ship-mini-info">
+            <p>CO2 [T]:{((boat.ballastTrip.totalCO2 + boat.ladenTrip.totalCO2)/1000).toFixed(2)} G,</p>
+          </div>
+          <div className="ship-mini-info">
+            <p>Distance [KM]: {((boat.ballastTrip.totalDistance/1000).toFixed(2))} G</p>
+          </div>
         <div className={`information ${(open) ? "active" : "disable"}`}>
           <p className="info-text">Total Price: </p>
           {Math.round(boat.price)}

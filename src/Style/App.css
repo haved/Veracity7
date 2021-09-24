@@ -99,3 +99,12 @@ svg {
   border-radius: 5px;
   padding: 0;
 }
+
+.vessel-name {
+  display: inline-block;
+}
+
+.ship-mini-info {
+  display: inline-block;
+  margin: 2px;
+}
