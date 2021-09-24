@@ -17,7 +17,6 @@ const MapContainer  = (props: {boats: Boat[]})  => {
     const {boats} = props;
     const [geographies, setGeographies] = React.useState<[] | Array<Feature<Geometry | null>>>([]);
     const trips: Trip[] = [];
-    const points: Array<number[]> = [];
 
     React.useEffect(() => {
         fetch('/data/world.json').then((response) => {
@@ -30,23 +29,39 @@ const MapContainer  = (props: {boats: Boat[]})  => {
                 const mapFeature: Array<Feature<Geometry | null>> = ((feature(worldData, worldData.objects.countries) as unknown) as FeatureCollection).features;
                 setGeographies(mapFeature);
             })
-
         })
     }, []);
 
     const projection = geoEqualEarth().scale(scale).translate([cx, cy]).rotate([0,0]);
     boats.forEach( e => {
+      console.log(e.ballastTrip.points.length);
         trips.push(e.ballastTrip);
         trips.push(e.ladenTrip);
-    })
+    });
 
-    trips.forEach( e => {
-        e.points.forEach(p => {
-            points.push([p.long, p.lat]);
-        });
-    })
+    function pathOfTrip(trip: Trip) {
+      const projectedPoints: [number, number][] = [];
+      trip.points.forEach((point) => {
+        const projectedPoint = projection([point.long, point.lat])!;
+        projectedPoints.push(projectedPoint);
+      });
 
-    console.log(points);
+      const pathData = projectedPoints.map((p, i)=> {
+        if(i == 0)
+          return `M ${p[0]} ${p[1]}`;
+        else
+          return `L ${p[0]} ${p[1]}`;
+      }).join(" ");
+
+      return (
+        <path key={`path-${uuid()}`}
+          d={pathData}
+          stroke="red"
+          fill="none"
+          strokeWidth={1}
+          />
+      );
+    }
 
     return (
         <div className={"Container"} id={"map"}>
@@ -62,14 +77,7 @@ const MapContainer  = (props: {boats: Boat[]})  => {
                     ))}
                 </g>
                 <g>
-                    {(points as []).map((d,i) => (
-                        <path key={`path-${uuid()}`}
-                        d={geoPath().projection(projection)(d) as string}
-                        fill={`rgba(100, 0, 0, 100)`}
-                        stroke="red"
-                        strokeWidth={0.5}
-                        />
-                    ))}
+                  {trips.map((d) => pathOfTrip(d))}
                 </g>
             </svg>
         </div>
