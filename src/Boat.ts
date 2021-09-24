@@ -80,7 +80,7 @@ export async function loadBoats(): Promise<Boat[]> {
     const trip = ballast ? ships[name].ballastTrip : ships[name].ladenTrip;
     const lastTime = trip?.points.length === 0 ? 0 : trip?.points[trip?.points.length-1].hourIn!;
     trip?.points.push({
-      hourIn: lastTime,
+      hourIn: lastTime+(+ais_point["hours_since_last_position"]!),
       long: +ais_point["longitude"]!,
       lat: +ais_point["latitude"]!,
     });
