@@ -32,7 +32,7 @@ const MapContainer  = ()  => {
     const projection = geoEqualEarth().scale(scale).translate([cx, cy]).rotate([0,0]);
 
     return (
-        <div>
+        <div className={"Container"} id={"map"}>
             <svg width={scale*3} height={scale*3} viewBox="0 0 800 450">
                 <g>
                     {(geographies as []).map((d, i) => (

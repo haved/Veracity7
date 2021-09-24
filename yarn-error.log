@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'C:\Users\Bruker\Desktop\Gren\Veracity7\node_modules\@rollup\plugin-node-resolve\node_modules\.bin'
+  Error: EPERM: operation not permitted, unlink 'C:\Users\Bruker\Desktop\Gren\Veracity7\node_modules\babel-preset-react-app\node_modules\@babel\core\node_modules\.bin'
 
 npm manifest: 
   {
@@ -26,16 +26,21 @@ npm manifest:
       "@testing-library/react": "^11.1.0",
       "@testing-library/user-event": "^12.1.10",
       "@types/d3": "^7.0.0",
+      "@types/geojson": "^7946.0.8",
       "@types/jest": "^26.0.15",
       "@types/node": "^12.0.0",
       "@types/react": "^17.0.0",
       "@types/react-dom": "^17.0.0",
-      "d3": "^7.0.3",
+      "@types/topojson-client": "^3.1.0",
       "bootstrap": "^5.1.1",
+      "d3": "^7.0.3",
+      "geojson": "^0.5.0",
       "react": "^17.0.2",
       "react-bootstrap": "^1.6.3",
       "react-dom": "^17.0.2",
       "react-scripts": "4.0.3",
+      "react-uuid": "^1.0.2",
+      "topojson-client": "^3.1.0",
       "typescript": "^4.1.2",
       "web-vitals": "^1.0.1"
     },
@@ -2004,7 +2009,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.39.tgz#e177e699ee1b8c22d23174caaa7422644389509f"
     integrity sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==
   
-  "@types/geojson@*":
+  "@types/geojson@*", "@types/geojson@^7946.0.8":
     version "7946.0.8"
     resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-7946.0.8.tgz#30744afdb385e2945e22f3b033f897f76b1f12ca"
     integrity sha512-1rkryxURpr6aWP7R786/UQOkJ3PcpQiWkAXBmdWc7ryFWqN6a4xfK7BtjXvFBKO9LjQ+MWQSWxYeZX1OApnArA==
@@ -2175,6 +2180,21 @@ Lockfile:
     integrity sha512-Gk9vaXfbzc5zCXI9eYE9BI5BNHEp4D3FWjgqBE/ePGYElLAP+KvxBcsdkwfIVvezs605oiyd/VrpiHe3Oeg+Aw==
     dependencies:
       "@types/jest" "*"
+  
+  "@types/topojson-client@^3.1.0":
+    version "3.1.0"
+    resolved "https://registry.yarnpkg.com/@types/topojson-client/-/topojson-client-3.1.0.tgz#2fd96d5e64f4f512742f22194f3e1e0443c27233"
+    integrity sha512-wmjTmMkF6k6m3Tn4mIyRjw8KUQZLHB1TxNcpGYirvV/aCINkC0eMJsUO/OPMkKIB6VO5iA6Vp39bmAq6QgvSfA==
+    dependencies:
+      "@types/geojson" "*"
+      "@types/topojson-specification" "*"
+  
+  "@types/topojson-specification@*":
+    version "1.0.2"
+    resolved "https://registry.yarnpkg.com/@types/topojson-specification/-/topojson-specification-1.0.2.tgz#e20df2c5a611e31f51d606473dbaccc1d90461c8"
+    integrity sha512-SGc1NdX9g3UGDp6S+p+uyG+Z8CehS51sUJ9bejA25Xgn2kkAguILk6J9nxXK+0M/mbTBN7ypMA7+4HVLNMJ8ag==
+    dependencies:
+      "@types/geojson" "*"
   
   "@types/uglify-js@*":
     version "3.12.0"
@@ -3716,15 +3736,15 @@ Lockfile:
     dependencies:
       delayed-stream "~1.0.0"
   
+  commander@2, commander@^2.20.0:
+    version "2.20.3"
+    resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
+    integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
+  
   commander@7:
     version "7.2.0"
     resolved "https://registry.yarnpkg.com/commander/-/commander-7.2.0.tgz#a36cb57d0b501ce108e4d20559a150a391d97ab7"
     integrity sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==
-  
-  commander@^2.20.0:
-    version "2.20.3"
-    resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
-    integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
   
   commander@^4.1.1:
     version "4.1.1"
@@ -5805,6 +5825,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/gensync/-/gensync-1.0.0-beta.2.tgz#32a6ee76c3d7f52d46b2b1ae5d93fea8580a25e0"
     integrity sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==
   
+  geojson@^0.5.0:
+    version "0.5.0"
+    resolved "https://registry.yarnpkg.com/geojson/-/geojson-0.5.0.tgz#3cd6c96399be65b56ee55596116fe9191ce701c0"
+    integrity sha1-PNbJY5m+ZbVu5VWWEW/pGRznAcA=
+  
   get-caller-file@^2.0.1:
     version "2.0.5"
     resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-2.0.5.tgz#4f94412a82db32f36e3b0b9741f8a97feb031f7e"
@@ -6415,6 +6440,7 @@ Lockfile:
     version "2.0.3"
     resolved "https://registry.yarnpkg.com/internmap/-/internmap-2.0.3.tgz#6685f23755e43c524e251d29cbc97248e3061009"
     integrity sha512-5Hh7Y1wQbvY5ooGgPbDaL5iYLAPzMTUrjMulskHLH6wnv/A+1q5rgEaiuqEjB+oxGXIVZs1FF+R/KPN3ZSQYYg==
+  
   invariant@^2.2.4:
     version "2.2.4"
     resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
@@ -9815,6 +9841,11 @@ Lockfile:
       loose-envify "^1.4.0"
       prop-types "^15.6.2"
   
+  react-uuid@^1.0.2:
+    version "1.0.2"
+    resolved "https://registry.yarnpkg.com/react-uuid/-/react-uuid-1.0.2.tgz#c77cea91cf38eafb1aaa7910f92621b2ed91b969"
+    integrity sha512-5e0GM16uuQj9MdRJlZ0GdLC8LKMwpU9PIqYmF27s3fIV2z+rLyASTaiW4aKzSY4DyGanz+ImzsECkftwGWfAwA==
+  
   react@^17.0.2:
     version "17.0.2"
     resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
@@ -11269,6 +11300,13 @@ Lockfile:
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/toidentifier/-/toidentifier-1.0.0.tgz#7e1be3470f1e77948bc43d94a3c8f4d7752ba553"
     integrity sha512-yaOH/Pk/VEhBWWTlhI+qXxDFXlejDGcQipMlyxda9nthulaxLZUNcUqFxokp0vcYnvteJln5FNQDRrxj3YcbVw==
+  
+  topojson-client@^3.1.0:
+    version "3.1.0"
+    resolved "https://registry.yarnpkg.com/topojson-client/-/topojson-client-3.1.0.tgz#22e8b1ed08a2b922feeb4af6f53b6ef09a467b99"
+    integrity sha512-605uxS6bcYxGXw9qi62XyrV6Q3xwbndjachmNxu8HWTtVPxZfEJN9fd/SZS1Q54Sn2y0TMyMxFj/cJINqGHrKw==
+    dependencies:
+      commander "2"
   
   tough-cookie@^2.3.3, tough-cookie@~2.5.0:
     version "2.5.0"
