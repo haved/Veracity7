@@ -5,8 +5,9 @@ import { Boat, loadBoats } from "../Boat";
 import "../Boat";
 import "../App";
 
-const ShipComponent = (props: { boat: Boat }) => {
-  const { boat } = props;
+const ShipComponent = (props: { boat: Boat, color: any}) => {
+  const color = props.color
+  const boat = props.boat;
   const [open, setOpen] = React.useState<Boolean>(false);
 
   const handleClick = () => {
@@ -14,7 +15,7 @@ const ShipComponent = (props: { boat: Boat }) => {
   }
 
   return (
-    <div className="ship-container" onClick={handleClick}>
+    <div className="ship-container" onClick={handleClick} style={{background: color}}>
       <div className="image" style={{backgroundColor: boat.color}}>
       </div>
       <div className="ship-info">

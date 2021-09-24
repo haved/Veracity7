@@ -12,7 +12,7 @@ import { sortAndDeduplicateDiagnostics } from "typescript";
 
 function App(this: any) {
   const [boatsUnsorted, setBoatsUnsorted] = useState<Boat[]>([]);
-  const [sorting, setSorting] = useState<string | null>();
+  const [sorting, setSorting] = useState<string | null>("totalCO2");
   const [boats, setBoats] = useState<Boat[]>([]);
 
   useEffect(() => {
