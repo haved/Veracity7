@@ -2,6 +2,7 @@ import * as d3 from 'd3';
 
 // You only pay for the laden trip
 const PRICE_PER_DAY = 47273;
+const COLORS: string[] = ["#05E6CF", "#2517E6", "#32E600", "#E65917", "#E6C30B", "#BD17E6"];
 
 export interface TripPoint {
   hourIn: number,
@@ -11,6 +12,7 @@ export interface TripPoint {
 
 export interface Trip {
   key: string,
+  color: string,
   points: TripPoint[],
   totalDistance: number,
   hours: number,
@@ -21,6 +23,7 @@ export interface Trip {
 export interface Boat {
   vesselName: string,
   shipDesign: string,
+  color: string,
   europeHarbor: string,
   usHarbor: string,
   chinaHarbor: string,
@@ -38,13 +41,19 @@ export async function loadBoats(): Promise<Boat[]> {
     const ship = ship_data[i];
     const name = ship["Vessel name"]!;
     if (!(name in ships))
-      ships[name] = {vesselName: name, shipDesign: ship["StandardShipDesign"]!, usHarbor: "USMSY"}
+      ships[name] = {
+        vesselName: name,
+        shipDesign: ship["StandardShipDesign"]!,
+        usHarbor: "USMSY",
+        color: COLORS[Math.floor(i/2)],
+      }
 
     const from = ship["PORT_UN_FROM"];
     const to = ship["PORT_UN_TO"];
 
     const trip: Trip = {
       key: `${name}-${from}-${to}`,
+      color: ships[name].color!,
       points: [],
       hours: +ship["HOURS_UNDERWAY [h]"]!,
       totalDistance: +ship["total_distance [nm]"]!,
