@@ -17,6 +17,7 @@ const MapContainer  = (props: {boats: Boat[]})  => {
     const {boats} = props;
     const [geographies, setGeographies] = React.useState<[] | Array<Feature<Geometry | null>>>([]);
     const trips: Trip[] = [];
+    const colors: string[] = ["#05E6CF", "#2517E6", "#32E600", "#E65917", "#E6C30B", "#BD17E6"];
 
     React.useEffect(() => {
         fetch('/data/world.json').then((response) => {
@@ -39,26 +40,30 @@ const MapContainer  = (props: {boats: Boat[]})  => {
         trips.push(e.ladenTrip);
     });
 
-    function pathOfTrip(trip: Trip) {
+    function pathOfTrip(trip: Trip, strokeColor: string) {
       const projectedPoints: [number, number][] = [];
       trip.points.forEach((point) => {
         const projectedPoint = projection([point.long, point.lat])!;
         projectedPoints.push(projectedPoint);
       });
 
+      let lastPoint = [0,0];
       const pathData = projectedPoints.map((p, i)=> {
-        if(i == 0)
+        if(i == 0 || Math.abs(lastPoint[0]-p[0])>100) {
+          lastPoint = p;
           return `M ${p[0]} ${p[1]}`;
-        else
+        } else {
+          lastPoint = p;
           return `L ${p[0]} ${p[1]}`;
+        }
       }).join(" ");
 
       return (
         <path key={`path-${uuid()}`}
           d={pathData}
-          stroke="red"
+          stroke={strokeColor}
           fill="none"
-          strokeWidth={1}
+          strokeWidth={1.5}
           />
       );
     }
@@ -77,7 +82,7 @@ const MapContainer  = (props: {boats: Boat[]})  => {
                     ))}
                 </g>
                 <g>
-                  {trips.map((d) => pathOfTrip(d))}
+                  {trips.map((d,i) => pathOfTrip(d, colors[Math.floor(i/2)]))}
                 </g>
             </svg>
         </div>
