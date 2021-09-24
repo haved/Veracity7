@@ -8,19 +8,37 @@ import { Card } from "react-bootstrap";
 import InfoContainer from "./Components/InfoContainer";
 import { Boat, loadBoats } from "./Boat";
 import { propTypes } from "react-bootstrap/esm/Image";
+import { sortAndDeduplicateDiagnostics } from "typescript";
 
 function App(this: any) {
+  const [boatsUnsorted, setBoatsUnsorted] = useState<Boat[]>([]);
+  const [sorting, setSorting] = useState<string | null>();
   const [boats, setBoats] = useState<Boat[]>([]);
 
   useEffect(() => {
     async function loadAsync() {
-      setBoats(await loadBoats());
+      setBoatsUnsorted(await loadBoats());
     }
-
     loadAsync();
   }, []);
 
-  console.log(boats);
+  useEffect(() => {
+    const sorted = [...boatsUnsorted];
+    if (sorting === "price") sorted.sort((a, b) => a.price - b.price);
+    setBoats(sorted);
+    if (sorting === "totalCO2")
+      sorted.sort(
+        (a, b) =>
+          a.ladenTrip.totalCO2 +
+          a.ballastTrip.totalCO2 -
+          (b.ladenTrip.totalCO2 + b.ballastTrip.totalCO2)
+      );
+    setBoats(sorted);
+    if (sorting === "ballastDistance")
+      sorted.sort(
+        (a, b) => a.ballastTrip.totalDistance - b.ballastTrip.totalDistance
+      );
+  }, [boatsUnsorted, sorting]);
 
   return (
     <div className="App">
@@ -31,7 +49,7 @@ function App(this: any) {
       </div>
       <div className="ContainerContainer">
         <MapContainer boats={boats}></MapContainer>
-        <InfoContainer boats={boats}></InfoContainer>
+        <InfoContainer boats={boats} setSorting={setSorting}></InfoContainer>
       </div>
     </div>
   );

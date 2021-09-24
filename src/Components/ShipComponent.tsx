@@ -19,11 +19,15 @@ const ShipComponent = (props: { boat: Boat }) => {
         </div>
         <div className="information">
           <p className="info-text">Total Price: </p>
-          {boat.price}
+          {Math.round(boat.price)}
         </div>
         <div className="information">
           <p className="info-text">Total CO2: </p>
-          {boat.ladenTrip.totalCO2 + boat.ballastTrip.totalCO2}
+          {Math.round(boat.ladenTrip.totalCO2 + boat.ballastTrip.totalCO2)}
+        </div>
+        <div className="information">
+          <p className="info-text">Distance From Me: </p>
+          {Math.round(boat.ballastTrip.totalDistance)}
         </div>
       </div>
     </div>

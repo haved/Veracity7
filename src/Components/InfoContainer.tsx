@@ -4,7 +4,10 @@ import ShipComponent from "./ShipComponent";
 import "../Style/App.css";
 import { Boat, loadBoats } from "../Boat";
 
-function InfoContainer(props: { boats: Boat[] }) {
+function InfoContainer(props: {
+  boats: Boat[];
+  setSorting: (sorting: string) => void;
+}) {
   const { boats } = props;
 
   let showBoats = boats.map((boat) => (
@@ -16,7 +19,7 @@ function InfoContainer(props: { boats: Boat[] }) {
       <div className="info-section">
         <div className="info-container">
           <h4>Organization Station</h4>
-          <Options></Options>
+          <Options setSorting={props.setSorting}></Options>
         </div>
         <div className="options-container">{showBoats}</div>
       </div>
