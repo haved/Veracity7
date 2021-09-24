@@ -3,21 +3,16 @@ import {Feature, Geometry, FeatureCollection } from 'geojson';
 import { feature } from 'topojson-client';
 import { geoEqualEarth, geoOrthographic, geoPath } from "d3-geo";
 import '../Style/App.css';
-import { Boat, Trip, TripPoint } from "../Boat";
-
-const uuid = require('react-uuid');
+import { Boat, Trip } from "../Boat";
 
 const scale: number = 200;
 const cx: number = 400;
 const cy: number = 150;
 
-
-
 const MapContainer  = (props: {boats: Boat[]})  => {
     const {boats} = props;
     const [geographies, setGeographies] = React.useState<[] | Array<Feature<Geometry | null>>>([]);
     const trips: Trip[] = [];
-    const colors: string[] = ["#05E6CF", "#2517E6", "#32E600", "#E65917", "#E6C30B", "#BD17E6"];
 
     React.useEffect(() => {
         fetch('/data/world.json').then((response) => {
@@ -40,7 +35,7 @@ const MapContainer  = (props: {boats: Boat[]})  => {
         trips.push(e.ladenTrip);
     });
 
-    function pathOfTrip(trip: Trip, strokeColor: string) {
+    function pathOfTrip(trip: Trip) {
       const projectedPoints: [number, number][] = [];
       trip.points.forEach((point) => {
         const projectedPoint = projection([point.long, point.lat])!;
@@ -49,7 +44,7 @@ const MapContainer  = (props: {boats: Boat[]})  => {
 
       let lastPoint = [0,0];
       const pathData = projectedPoints.map((p, i)=> {
-        if(i == 0 || Math.abs(lastPoint[0]-p[0])>100) {
+        if(i === 0 || Math.abs(lastPoint[0]-p[0])>100) {
           lastPoint = p;
           return `M ${p[0]} ${p[1]}`;
         } else {
@@ -59,9 +54,9 @@ const MapContainer  = (props: {boats: Boat[]})  => {
       }).join(" ");
 
       return (
-        <path key={`path-${uuid()}`}
+        <path key={trip.key}
           d={pathData}
-          stroke={strokeColor}
+          stroke={trip.color}
           fill="none"
           strokeWidth={1.5}
           />
@@ -73,7 +68,7 @@ const MapContainer  = (props: {boats: Boat[]})  => {
             <svg width={scale*3} height={scale*3} viewBox="0 0 800 450">
                 <g>
                     {(geographies as []).map((d, i) => (
-                        <path key={`path-${uuid()}`} 
+                        <path key={`path-${i}`} 
                         d={geoPath().projection(projection)(d) as string}
                         fill={`rgba(38,50,56,${(1/ (geographies ? geographies.length : 0)) * i})`}
                         stroke="aliceblue"
@@ -82,7 +77,7 @@ const MapContainer  = (props: {boats: Boat[]})  => {
                     ))}
                 </g>
                 <g>
-                  {trips.map((d,i) => pathOfTrip(d, colors[Math.floor(i/2)]))}
+                  {trips.map((d) => pathOfTrip(d))}
                 </g>
             </svg>
         </div>
