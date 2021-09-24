@@ -43,26 +43,24 @@ const ShipComponent = (props: { boat: Boat, color: any, hidden: boolean, toggleB
             <Form.Check aria-label="option 1" onClick={handleHideToggle} />
           </div>
         </div>
-        <div className="ship-mini-info">
-            <p>Price: {(boat.price/1000000).toFixed(2)} M$,</p>
+        <div className={(open) ? "disable" : "active"}>
+          <div className="ship-mini-info">
+            <p>Price/nm: {((boat.price)/(boat.ladenTrip.totalDistance)).toFixed(2)} $,</p>
           </div>
           <div className="ship-mini-info">
-            <p>CO2 [T]:{((boat.ballastTrip.totalCO2 + boat.ladenTrip.totalCO2)/1000).toFixed(2)} G,</p>
+            <p>CO2(t)/nm: {((boat.ballastTrip.totalCO2 + boat.ladenTrip.totalCO2)/(boat.ballastTrip.totalDistance + boat.ladenTrip.totalDistance)).toFixed(2)}</p>
           </div>
-          <div className="ship-mini-info">
-            <p>Distance [KM]: {((boat.ballastTrip.totalDistance/1000).toFixed(2))} G</p>
-          </div>
-        <div className={`information ${(open) ? "active" : "disable"}`}>
-          <p className="info-text">Total Price: </p>
-          {Math.round(boat.price)}
         </div>
         <div className={`information ${(open) ? "active" : "disable"}`}>
-          <p className="info-text">Total CO2: </p>
-          {Math.round(boat.ladenTrip.totalCO2 + boat.ballastTrip.totalCO2)}
+          <p className="info-text">Total Price: </p> <p className="info-value">{(boat.price/1000000).toFixed(2)} M$</p>
+          
         </div>
         <div className={`information ${(open) ? "active" : "disable"}`}>
-          <p className="info-text">Distance From Me: </p>
-          {Math.round(boat.ballastTrip.totalDistance)}
+          <p className="info-text">Total CO2 (t): </p> <p className="info-value">{((boat.ballastTrip.totalCO2 + boat.ladenTrip.totalCO2)/1000).toFixed(2)} G</p>
+          
+        </div>
+        <div className={`information ${(open) ? "active" : "disable"}`}>
+          <p className="info-text">Dinstance from me (nm): </p> <p className="info-value">{((boat.ballastTrip.totalDistance/1000).toFixed(2))} G</p>
         </div>
       </div>
     </div>

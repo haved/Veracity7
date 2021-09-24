@@ -12,6 +12,8 @@ const Options = (props: { setSorting: (sort: string) => void }) => {
         <option value="price">Price</option>
         <option value="totalCO2" selected={true}>CO2 Emissions</option>
         <option value="ballastDistance">Distance</option>
+        <option value="CO2nm">CO2/nm</option>
+        <option value="pricenm">Price/nm</option>
       </select>
     </div>
   );
