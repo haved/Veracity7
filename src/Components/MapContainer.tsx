@@ -36,7 +36,7 @@ const MapContainer  = (props: {boats: Boat[]})  => {
     })
 
     return (
-        <div>
+        <div className={"Container"} id={"map"}>
             <svg width={scale*3} height={scale*3} viewBox="0 0 800 450">
                 <g>
                     {(geographies as []).map((d, i) => (
