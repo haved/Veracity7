@@ -5,7 +5,7 @@ import { Boat, loadBoats } from "../Boat";
 import "../Boat";
 import "../App";
 
-const ShipComponent = async () => {
+const ShipComponent = () => {
   return (
     <div className="ship-container">
       <div>
