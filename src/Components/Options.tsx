@@ -10,7 +10,7 @@ const Options = (props: { setSorting: (sort: string) => void }) => {
     <div className="options">
       <select className="form-select" onChange={handleSelect}>
         <option value="price">Price</option>
-        <option value="totalCO2">CO2 Emissions</option>
+        <option value="totalCO2" selected={true}>CO2 Emissions</option>
         <option value="ballastDistance">Distance</option>
       </select>
     </div>

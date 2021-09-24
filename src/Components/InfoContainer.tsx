@@ -9,9 +9,10 @@ function InfoContainer(props: {
   setSorting: (sorting: string) => void;
 }) {
   const { boats } = props;
+  const COLORS: string[] = ["#00AA00", "#66AA00", "#99AA00", "#AAAA00", "#AA6600", "#AA0000"];
 
-  let showBoats = boats.map((boat) => (
-    <ShipComponent boat={boat} key={boat.vesselName}></ShipComponent>
+  let showBoats = boats.map((boat, i) => (
+    <ShipComponent boat={boat} color={COLORS[i]} key={boat.vesselName}></ShipComponent>
   ));
 
   return (
