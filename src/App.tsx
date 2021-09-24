@@ -8,7 +8,6 @@ import { Card } from "react-bootstrap";
 import InfoContainer from "./Components/InfoContainer";
 import { Boat, loadBoats } from "./Boat";
 import { propTypes } from "react-bootstrap/esm/Image";
-import { sortAndDeduplicateDiagnostics } from "typescript";
 
 function App(this: any) {
   const [boatsUnsorted, setBoatsUnsorted] = useState<Boat[]>([]);
@@ -62,7 +61,7 @@ function App(this: any) {
         </header>
       </div>
       <div className="ContainerContainer">
-        <MapContainer boats={boats} boatsHidden={boatsHidden}></MapContainer>
+        <MapContainer boats={boats} boatsHidden={boatsHidden} dotVariable="price"></MapContainer>
         <InfoContainer boats={boats} setSorting={setSorting} boatsHidden={boatsHidden} setBoatsHidden={setBoatsHidden}></InfoContainer>
       </div>
     </div>
