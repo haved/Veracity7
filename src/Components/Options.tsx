@@ -5,13 +5,13 @@ const Options = () => {
   const [value, setValue] = React.useState(null);
 
   const handleSelect = (e: any) => {
-    console.log(e);
+    console.log(e.target[e.target.selectedIndex].value);
     console.log("lol");
   };
 
   return (
     <div className="options">
-      <select className="form-select" onSelect={(e) => handleSelect}>
+      <select className="form-select" onChange={handleSelect}>
         <option value="price">Price</option>
         <option value="totalCO2">CO2 Emissions</option>
         <option value="distance">Distance</option>
