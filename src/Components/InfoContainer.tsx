@@ -15,7 +15,7 @@ function InfoContainer(props: { boats: Boat[] }) {
     <div className="Container" id={"info"}>
       <div className="info-section">
         <div className="info-container">
-          <p>Organization Station</p>
+          <h4>Organization Station</h4>
           <Options></Options>
         </div>
         <div className="options-container">{showBoats}</div>

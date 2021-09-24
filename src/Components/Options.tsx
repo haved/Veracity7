@@ -1,23 +1,23 @@
 import * as React from "react";
 import { Dropdown } from "react-bootstrap";
 
-const Options  = ()  => {
-    return (
-        <div className="options">
-            <Dropdown>
-            <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                Sort By
-            </Dropdown.Toggle>
+const Options = () => {
+  const [value, setValue] = React.useState(null);
 
-                <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">Price</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">CO2 Emissions</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">Distance</Dropdown.Item>
-                </Dropdown.Menu>
-            </Dropdown>
+  const handleSelect = (e: any) => {
+    console.log(e);
+    console.log("lol");
+  };
 
-        </div>
-    )
-}
+  return (
+    <div className="options">
+      <select className="form-select" onSelect={(e) => handleSelect}>
+        <option value="price">Price</option>
+        <option value="totalCO2">CO2 Emissions</option>
+        <option value="distance">Distance</option>
+      </select>
+    </div>
+  );
+};
 
-export default Options
+export default Options;
